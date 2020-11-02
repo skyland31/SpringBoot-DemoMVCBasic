@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Hello Spring Thymeleaf</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
+
+
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+    <a class="navbar-brand " href="/" style="color: #dddddd">Navbar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+            <a class="nav-item nav-link" href="registerUser" style="color:grey ">Register</a>
+            <a class="nav-item nav-link" href="getAllUser" style="color:grey ">View All User (Json)</a>
+            <a class="nav-item nav-link " href="tableAllUser" style="color:grey ">View All User (Table)</a>
+            <a class="nav-item nav-link " href="organize" style="color:grey ">View All Organize (Table)</a>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid" style="padding-top: 30px">
+    <row>
+        <col >
+        <h2 style="text-align: center">User Table</h2><br/>
+        <table id="tableAllUser" class="table table-striped table-bordered" style="width:100%">
+            <thead>
+                <tr>
+                    <th style="text-align: center"></th>
+                    <th style="text-align: center"></th>
+                    <th style="text-align: center"></th>
+                    <th style="text-align: center"> </th>
+                    <th style="text-align: center"></th>
+                    <th style="text-align: center"></th>
+                    <th style="text-align: center"></th>
+                    <th style="text-align: center"></th>
+                </tr>
+            </thead>
+
+<!--             <tr th:each="dataUser : ${dataUser}">-->
+<!--                    <td ></td>-->
+<!--                    <td ></td>-->
+<!--                    <td ></td>-->
+<!--                    <td ></td>-->
+<!--                    <td ></td>-->
+<!--                    <td ></td>-->
+<!--                    <td ></td>-->
+<!--                    <td style="text-align: center"><a th:href="|/delete/${dataUser.userId}|"><button type="button" class="btn btn-danger">Delete</button></a>-->
+<!--                        <a th:href="|/edit/${dataUser.userId}|"><button type="button" class="btn btn-warning">Edit</button></a><br/>-->
+<!--                    </td>-->
+<!--             </tr>-->
+        </table>
+        </col>
+    </row>
+</div>
+<script type="text/javascript">
+
+    $(document).ready( function () {
+        let url = "/getAllUserJson"
+        $('#tableAllUser').DataTable({
+            // "serverSide": true,
+            "ajax": {
+                "url": url,
+                "dataSrc":""
+            },
+            "columns": [
+                { "data": "userId" },
+                { "title" : "Name","data": "name" },
+                { "title" : "Last Name","data": "lastName" },
+                { "title" : "tel","data": "tel" },
+                { "title" : "Create Date","data": "createDate",
+                    "render" : function (data) {
+                        return  new Date(data);
+                    }
+                },
+                { "title" : "Email","data": "email" },
+                { "title" : "Organize Name","data": "organizeEntity.orgName" },
+                { "title" : "Manage",
+                    "data": "userId",
+                    "render" : function (data) {
+                        return '<a href="/delete/' + data+'"><button type="button" class="btn btn-danger">Delete</button></a><a href="/edit/'+data+'"><button type="button" class="btn btn-warning">Edit</button></a><br/>';
+                    }
+                }
+            ]
+        })
+
+
+    });
+
+</script>
+
+</body>
+</html>

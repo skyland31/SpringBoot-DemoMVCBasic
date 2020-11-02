@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Hello Spring Thymeleaf</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+    <a class="navbar-brand " href="/" style="color: #dddddd">Navbar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+             <a class="nav-item nav-link" href="registerUser" style="color:grey ">Register</a>
+            <a class="nav-item nav-link" href="getAllUser" style="color:grey ">View All User (Json)</a>
+            <a class="nav-item nav-link disabled" href="tableAllUser" style="color:grey ">View All User (Table)</a>
+            <a class="nav-item nav-link disabled" href="organize" style="color:grey ">View All Organize (Table)</a>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <row>
+        <col >
+        <h2>User Table</h2><br/>
+            <table>
+                <tr>
+                    <th style="text-align: center">id</th>
+                    <th style="text-align: center">name</th>
+                    <th style="text-align: center">lastName</th>
+                    <th style="text-align: center"> tel</th>
+                    <th style="text-align: center">Created Date</th>
+                    <th style="text-align: center">Email</th>
+                    <th style="text-align: center">Organize Name</th>
+                    <th> </th>
+                </tr>
+                <tr th:each="dataUser : ${dataUser}">
+                    <td th:text="${dataUser.userId}"></td>
+                    <td th:text="${dataUser.name}"></td>
+                    <td th:text="${dataUser.lastName}"></td>
+                    <td th:text="${dataUser.tel}"></td>
+                    <td th:text="${dataUser.createDate}"></td>
+                    <td th:text="${dataUser.email}"></td>
+                    <td th:text="${dataUser.organizeEntity.orgName}"></td>
+                    <td style="text-align: center"><a th:href="|/delete/${dataUser.userId}|"><button type="button" class="btn btn-danger">Delete</button></a>
+                        <a th:href="|/edit/${dataUser.userId}|"><button type="button" class="btn btn-warning">Edit</button></a><br/>
+                    </td>
+                </tr>
+            </table>
+        </col>
+    </row>
+</div>
+
+
+</body>
+</html>

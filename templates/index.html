@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html  xmlns:form="http://www.w3.org/1999/html">
+<head>
+    <title>Hello Spring Thymeleaf</title>
+    <style>
+        nav {
+            position: fixed;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+    <a class="navbar-brand " href="/" style="color: #dddddd">Navbar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+            <a class="nav-item nav-link" href="registerUser" style="color:grey ">Register</a>
+            <a class="nav-item nav-link" href="getAllUser" style="color:grey ">View All User (Json)</a>
+            <a class="nav-item nav-link disabled" href="tableAllUser" style="color:grey ">View All User (Table)</a>
+            <a class="nav-item nav-link disabled" href="organize" style="color:grey ">View All Organize (Table)</a>
+        </div>
+    </div>
+</nav>
+    <div class="container" style="padding-top: 50px">
+        <row >
+            <col >
+            <form method="post" action="test">
+                <div class="form-group">
+                    <label for="fname">Name</label>
+                    <input type="text" class="form-control" id="fname" name = "fname" aria-describedby="emailHelp" placeholder="Enter Name">
+                    <small id="emailHelp" class="form-text text-muted">We'll never share your Name with anyone else.</small>
+                </div>
+                <div class="form-group">
+                    <label for="lname">Last Name</label>
+                    <input type="text" class="form-control" id="lname" name = "lname" placeholder="Enter Last Name">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+            <form method="POST" enctype="multipart/form-data" action="upload">
+                <label for="file">File to upload:</label> <input id="file" type="file" name="file" />
+                <input type="submit" value="Upload" />
+            </form>
+            </col>
+        </row>
+
+    </div>
+<script>
+</script>
+</body>
+</html>

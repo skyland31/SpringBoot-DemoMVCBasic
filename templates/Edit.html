@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+    <a class="navbar-brand " href="/" style="color: #dddddd">Navbar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+            <a class="nav-item nav-link" href="/registerUser" style="color:grey ">Register</a>
+            <a class="nav-item nav-link" href="/getAllUser" style="color:grey ">View All User (Json)</a>
+            <a class="nav-item nav-link disabled" href="/tableAllUser" style="color:grey ">View All User (Table)</a>
+            <a class="nav-item nav-link disabled" href="/organize" style="color:grey ">View All Organize (Table)</a>
+        </div>
+    </div>
+</nav>
+
+<!--<div class="container" style="padding: 30px">-->
+<!--    <row>-->
+<!--        <col class = "lg-3 md-3 sm-3">-->
+<!--        <form method="post" action="/edit/update">-->
+<!--            <div class="form-group">-->
+<!--                <label for="userId">Organize ID:</label>-->
+<!--                <input type="number" disabled class="form-control" id="userId" name = "userId" placeholder="Enter Name" th:value = "${user.userId}">-->
+<!--            </div>-->
+<!--            <div class="form-group">-->
+<!--                <label for="name">Organize name:</label>-->
+<!--                <input type="text" class="form-control" id="name" name = "name" placeholder="Enter Name" th:value = "${user.name}">-->
+<!--            </div>-->
+<!--            <div class="form-group">-->
+<!--                <label for="lastName">last Name</label>-->
+<!--                <input type="text" class="form-control" id="lastName" name = "lastName" placeholder="Enter lastName" th:value = "${user.lastName}">-->
+<!--            </div>-->
+<!--            <div class="form-group">-->
+<!--                <label for="tel">Telephone</label>-->
+<!--                <input type="text" class="form-control" id="tel" name = "tel" placeholder="Enter Telephone" th:value = "${user.tel}">-->
+<!--            </div>-->
+<!--            <div class="form-group">-->
+<!--                <label for="email">Telephone</label>-->
+<!--                <input type="text" class="form-control" id="email" name = "email" placeholder="Enter email" th:value = "${user.email}">-->
+<!--            </div>-->
+<!--            <div class="form-group">-->
+<!--                <label >Organize Before</label>&ndash;&gt;-->
+<!--                <input type="text" class="form-control" name="orgBefore" th:value="${user.organizeEntity.orgName}"  disabled=""><br><br>-->
+<!--            </div>-->
+<!--            <div class="form-group">&ndash;&gt;-->
+<!--                <label >Example select</label>-->
+<!--                <select class="form-control" id="orgId" name="orgId" required>-->
+<!--                    <option th:each ="o:${org}" th:value="${o.orgId}" th:text="${o.orgName}"></option>-->
+<!--                </select>-->
+<!--            </div>-->
+<!--            <button type="submit" class="btn btn-primary">Submit</button>-->
+<!--            <a href="/tableAllUser"><button class="btn btn-danger">Cancel</button></a>-->
+<!--        </form>-->
+<!--        </col>-->
+<!--    </row>-->
+
+<!--</div>-->
+<div class="container" style="padding: 50px">
+    <row>
+        <col>
+        <form method="post" action="/edit/update" >
+            <label for="userId">User Id:</label><br>
+            <input class="form-control" type="number"  id="userId" name="userId" th:value="${user.userId}" required=""><br>
+            <label for="name">First name:</label><br>
+            <input class="form-control" type="text" id="name" name="name" th:value="${user.name}" required=""><br>
+            <label for="lastName">Last name:</label><br>
+            <input class="form-control" type="text" id="lastName" name="lastName" th:value="${user.lastName}" required=""><br><br>
+            <label for="tel">tel:</label><br>
+            <input class="form-control" type="text" id="tel" name="tel" th:value="${user.tel}" required=""><br><br>
+            <label for="email">Email:</label><br>
+            <input class="form-control" type="email" id="email" name="email" th:value="${user.email}" required=""><br><br>
+            <label >Organize Before</label>-->
+            <input class="form-control" type="text"  name="orgBefore" th:value="${user.organizeEntity.orgName}" disabled=""><br><br>
+            <label >Example select</label>-->
+            <select class="form-control" id="orgId" name="orgId" required>
+                <option th:each ="o:${org}" th:value="${o.orgId}" th:text="${o.orgName}"></option>
+            </select>
+            <button type="submit" class="btn btn-primary">Update</button>
+            <a href="/tableAllUser"><button class="btn btn-danger">Cancel</button></a>
+        </form>
+        </col>
+    </row>
+</div>
+
+
+
+
+</body>
+</html>
